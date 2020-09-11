@@ -2,10 +2,35 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
- <mapper namespace="org.dao.CityDao">
-   <select id="selectAllCustomerCount" >
+ <mapper namespace="org.dao.CustomerDao">
+   <select id="selectAllCustomerGetCount" resultType="Customers">
     select count(*) from customer
+    <!-- 代码包含 id等于复用处的代码即可 --> 
+    <include refid="select" />
    </select> 
    
-     
+   <select id="selectAllCustomerByCondition" resultType="list">
+    select * from customer
+    <!-- 代码包含 id等于复用处的代码即可 --> 
+    <include refid="select" />
+    limit #{pageIndex.pageIndex},#{pageSize.pageSize}
+   </select> 
+    
+   <sql id="select">
+     <where>
+      <if test="customer.cname!='' and customer.cname!=null">
+        cname like '%' #{customer.cname} '%'
+      </if>
+      <if test="customer.gender!='' and customer.gender!=null">
+        and gender = #{customer.gender} 
+      </if>
+      <if test="customer.cellphone!='' and customer.cellphone!=null">
+        and cellphone like '%' #{customer.cellphone} '%'
+      </if>
+      <if test="customer.email!='' and customer.email!=null">
+        and email like '%' #{customer.email} '%'
+      </if>
+    </where>
+   </sql>
+      
  </mapper>
