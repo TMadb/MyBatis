@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+   <!-- 引入配置文件 -->
+   <properties resource="mysql.properties" />
+      
+   <typeAliases>
+    <!-- 设置实体类的路径，设置后mapper配置中可省略路径 -->
+     <package name="org.entity"/>
+   </typeAliases> 
+   <environments default="test">
+     <environment id="test">
+        <!--默认的事务处理 -->
+        <transactionManager type="JDBC">         
+		</transactionManager>
+        <!--现在使用默认的数据库连接池 --> 
+        <dataSource type="POOLED">
+          <property name="driver" value="${jdbc.driver}"/>
+          <property name="username" value="${jdbc.username}"/>
+          <property name="password" value="${jdbc.password}"/>
+          <property name="url" value="${jdbc.url}"/>
+        </dataSource>    
+     </environment>
+   </environments>
+   <!-- 将映射文件添加到主配置文件中 -->
+   <mappers>
+   		<!-- <mapper resource="org/daoimpl/citydaomapper.xml" /> -->
+   		<mapper resource="org/dao/CityDao.xml" />
+   </mappers>
+ </configuration>
