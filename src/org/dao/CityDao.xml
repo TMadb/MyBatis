@@ -34,5 +34,87 @@
    <select id="selectAllCity" resultType="City">
     select * from city
    </select>
+   
+   <select id="selectAllCityBySort" resultType="City">
+    select * from city where cname like '%' #{city.cname} '%' 
+   </select>
+   
+   <select id="selectAllCityByMoreSort" resultType="City">
+    select * from city where cname like '%' #{cname} '%' and pid=#{pid}
+   </select>
+   
+   <select id="selectAllCityByMoresSort" resultType="City">
+    select * from city where cname like '%' #{cname} '%' and pid=#{city.pid}
+   </select>
+   
+   <!-- 动态的sql语句，类似于jstl的书写方式 -->
+   <select id="selectAllCityByIf" resultType="City">
+    select * from city where 
+    <if test="cname!=null">
+      cname like '%' #{cname} '%'
+    </if>
+    <if test="pid!=null">
+      and pid=#{pid}
+    </if>
+   </select>
+   
+   <select id="selectAllCityByWhere" resultType="City">
+    select * from city where 
+    <where>
+      <if test="cname!=null and cname != ''">
+      cname like '%' #{cname} '%'
+    </if>
+    <if test="pid!=null and pid != ''">
+      and pid=#{pid}
+    </if>
+    </where>
+   </select>
+   <!-- 一组参数(数组的形式传入) -->
+   <select id="selectAllCityByArray" resultType="City">
+    select * from city  
+    <if test="array.length > 0 and array!=null">
+      where cid in
+      <!-- collection  表示传入的是何种类型的参数
+      	   item  映射那个字段
+      	   open close 从哪开始 从哪结束
+      	   separator 以什么符号进行分割
+       -->
+      <foreach collection="array" item="cid" open="(" close=")" separator=",">
+        #{cid}
+      </foreach>
+    </if>
+   </select>
+   
+   <!-- 一组参数(List的形式传入) -->
+   <select id="selectAllCityByList" resultType="City">
+    select * from city  
+    <if test="list.size > 0 and list!=null">
+      where pid in
+      <!-- collection  表示传入的是何种类型的参数
+      	   item  映射那个字段
+      	   open close 从哪开始 从哪结束
+      	   separator 以什么符号进行分割
+       -->
+      <foreach collection="list" item="pid" open="(" close=")" separator=",">
+        #{pid}
+      </foreach>
+    </if>
+   </select>
+   
+   <!-- 一组参数(List<City>的形式传入) -->
+   <select id="selectAllCityByLists" resultType="City">
+    select * from city  
+    <if test="list.size > 0 and list!=null">
+      where pid in
+      <!-- collection  表示传入的是何种类型的参数
+      	   item  映射那个字段
+      	   open close 从哪开始 从哪结束
+      	   separator 以什么符号进行分割
+       -->
+      <foreach collection="list" item="city" open="(" close=")" separator=",">
+        #{city.pid}
+      </foreach>
+    </if>
+   </select>
      
  </mapper>
