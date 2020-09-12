@@ -26,7 +26,7 @@ public class Page<T> {
 	private Integer pageEnd;    //结束索引
 	
 	//特殊样式显示算法
-    public void getPageBegin() {
+    public void setPageBegin() {
 		if(getTotalPage() < 10) {
 		   pageBegin = 1;
 		   pageEnd = getTotalPage();
@@ -62,12 +62,12 @@ public class Page<T> {
 	}
 
 	public Integer getTotalPage() {
-		return totalPage;
+		return this.totalPage = count%pageSize==0?count/pageSize:count/pageSize+1;
 	}
 
-	public void setTotalPage(Integer totalPage) {
-		this.totalPage = totalPage;
-	}
+//	public void setTotalPage(Integer totalPage) {
+//		this.totalPage = totalPage;
+//	}
 
 	public Integer getCount() {
 		return count;

@@ -3,17 +3,17 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  <mapper namespace="org.dao.CustomerDao">
-   <select id="selectAllCustomerGetCount" resultType="Customers">
+   <select id="selectAllCustomerGetCount" resultType="int">
     select count(*) from customer
     <!-- 代码包含 id等于复用处的代码即可 --> 
     <include refid="select" />
    </select> 
    
-   <select id="selectAllCustomerByCondition" resultType="list">
+   <select id="selectAllCustomerByCondition" resultType="Customers">
     select * from customer
     <!-- 代码包含 id等于复用处的代码即可 --> 
     <include refid="select" />
-    limit #{pageIndex.pageIndex},#{pageSize.pageSize}
+    limit #{pageIndex},#{pageSize}
    </select> 
     
    <sql id="select">
