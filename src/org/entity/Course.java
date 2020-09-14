@@ -1,22 +1,32 @@
 package org.entity;
 
+import java.util.List;
+
 public class Course {
 	
 	private Integer cid;
 	
 	private String cname;
 	
-	private Stu stu;
+	private List<Stu> stus;
 
-	public Course(Integer cid, String cname, Stu stu) {
+	private Score score;
+
+	public Course(Integer cid, String cname, List<Stu> stus, Score score) {
 		super();
 		this.cid = cid;
 		this.cname = cname;
-		this.stu = stu;
+		this.stus = stus;
+		this.score = score;
 	}
 
 	public Course() {
 		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Course [cid=" + cid + ", cname=" + cname + ", stus=" + stus + ", score=" + score + "]";
 	}
 
 	public Integer getCid() {
@@ -35,16 +45,20 @@ public class Course {
 		this.cname = cname;
 	}
 
-	public Stu getStu() {
-		return stu;
+	public List<Stu> getStus() {
+		return stus;
 	}
 
-	public void setStu(Stu stu) {
-		this.stu = stu;
+	public void setStus(List<Stu> stus) {
+		this.stus = stus;
 	}
 
-	@Override
-	public String toString() {
-		return "Course [cid=" + cid + ", cname=" + cname + ", stu=" + stu + "]";
+	public Score getScore() {
+		return score;
 	}
+
+	public void setScore(Score score) {
+		this.score = score;
+	}
+ 
 }

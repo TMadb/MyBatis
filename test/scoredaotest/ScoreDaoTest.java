@@ -1,25 +1,23 @@
-package coursedaotest;
+package scoredaotest;
 
 import org.apache.ibatis.session.SqlSession;
-import org.dao.CourseDao;
-import org.dao.StuDao;
-import org.entity.Course;
+import org.dao.ScoreDao;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.utils.SqlSessionUtil;
 
-public class CourseDaoTest {
+public class ScoreDaoTest {
 	
 	
 	//创建sqlsession和Dao层对象
 		 SqlSession sqlsession;
-		 CourseDao courseDao;
+		 ScoreDao scoreDao;
 		 
 		 @Before
 		 public void setup() {
 			 sqlsession = SqlSessionUtil.getSqlSession();
-			 courseDao = sqlsession.getMapper(CourseDao.class);
+			 scoreDao = sqlsession.getMapper(ScoreDao.class);
 		 }
 		 
 		 @After
@@ -30,14 +28,13 @@ public class CourseDaoTest {
 		 }
 		
 		 @Test
-		 public void testselectAllStuByCid() {
-			 System.out.println(courseDao.selectAllCourseBySid(2));
-			
+		 public void testselectScoreBySid() {
+			System.out.println(scoreDao.selectScoreBySid(1));
 		 }
 		 
 		 @Test
-		 public void testselectAllStu() {
-			 System.out.println(courseDao.selectAllCourse());
+		 public void testselectAllScore() {
+			 System.out.println(scoreDao.selectAllScore());
 		 }
 		 
 }

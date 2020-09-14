@@ -1,28 +1,15 @@
 package org.entity;
 
-import java.util.List;
-
 public class Score {
 	
 	private Integer scid;
 	
+	private Integer score;
+	
 	private Stu stu;
 	
-	private List<Course> courses;
+	private Course course;
 	
-	private Integer score;
-
-	public Score(Integer scid, Stu stu, List<Course> courses, Integer score) {
-		super();
-		this.scid = scid;
-		this.stu = stu;
-		this.courses = courses;
-		this.score = score;
-	}
-
-	public Score() {
-		super();
-	}
 
 	public Integer getScid() {
 		return scid;
@@ -40,12 +27,12 @@ public class Score {
 		this.stu = stu;
 	}
 
-	public List<Course> getCourses() {
-		return courses;
+	public Course getCourse() {
+		return course;
 	}
 
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public Integer getScore() {
@@ -56,9 +43,23 @@ public class Score {
 		this.score = score;
 	}
 
+	public Score(Integer scid, Stu stu, Course course, Integer score) {
+		super();
+		this.scid = scid;
+		this.stu = stu;
+		this.course = course;
+		this.score = score;
+	}
+
+	public Score() {
+		super();
+	}
+
 	@Override
 	public String toString() {
-		return "Score [scid=" + scid + ", stu=" + stu + ", courses=" + courses + ", score=" + score + "]";
+		return "Score [scid=" + scid + ", stu=" + stu + ", course=" + course + ", score=" + score + "]";
 	}
+
+	
 	
 }

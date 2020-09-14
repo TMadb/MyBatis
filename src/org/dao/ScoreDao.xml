@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="org.dao.ScoreDao">
+    <select id="selectScoreBySid" resultMap="scoreMapper">
+      select * from score where scid = #{scid}
+    </select>
+    <select id="selectAllScore" resultMap="scoreMapper">
+      select * from score
+    </select>
+    
+    <resultMap type="Score" id="scoreMapper">
+      <id column="scid" property="scid" />
+      <result column="score" property="score" />
+      <association property="stu" javaType="Stu"  column="sid" select="slectStu" />  
+      <association property="course" javaType="Course" column="cid" select="slectCourse" />       
+    </resultMap> 
+    
+    <select id="slectStu" resultType="Stu">
+      select * from stu where sid = #{sid}
+    </select> 
+    
+    <select id="slectCourse" resultType="Course">
+      select * from course where cid = #{cid}
+    </select> 
+ </mapper>

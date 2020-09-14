@@ -8,6 +8,6 @@ public interface CourseDao {
 	
 	Course selectAllCourseBySid(Integer cid);
 	
-	List<Course> selectAllStu();
+	List<Course> selectAllCourse();
 
 }

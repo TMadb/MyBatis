@@ -5,6 +5,15 @@
  <configuration>
    <!-- 引入配置文件 -->
    <properties resource="mysql.properties" />
+   
+   <!-- 延迟开关必须放在properties之后 -->
+   <settings>
+     <setting name="lazyLoadingEnabled" value="true"/>
+     <!-- 延迟开关开启后自动打开，可以不用配置
+          把它的属性值设置为false即为打开深度延迟 -->
+     
+     <setting name="aggressiveLazyLoading" value="false"/>
+   </settings>
       
    <typeAliases>
     <!-- 设置实体类的路径，设置后mapper配置中可省略路径 -->
@@ -32,5 +41,6 @@
    		<mapper resource="org/dao/DepartmentDao.xml" />
    		<mapper resource="org/dao/StuDao.xml" />
    		<mapper resource="org/dao/CourseDao.xml" />
+   		<mapper resource="org/dao/ScoreDao.xml" />
    </mappers>
  </configuration>
