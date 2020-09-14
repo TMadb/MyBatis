@@ -42,5 +42,6 @@
    		<mapper resource="org/dao/StuDao.xml" />
    		<mapper resource="org/dao/CourseDao.xml" />
    		<mapper resource="org/dao/ScoreDao.xml" />
+   		<mapper resource="org/dao/OrderDao.xml" />
    </mappers>
  </configuration>
