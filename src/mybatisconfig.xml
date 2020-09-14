@@ -30,5 +30,7 @@
    		<mapper resource="org/dao/CityDao.xml" />
    		<mapper resource="org/dao/CustomerDao.xml" />
    		<mapper resource="org/dao/DepartmentDao.xml" />
+   		<mapper resource="org/dao/StuDao.xml" />
+   		<mapper resource="org/dao/CourseDao.xml" />
    </mappers>
  </configuration>

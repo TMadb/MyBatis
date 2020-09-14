@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="org.dao.CourseDao">
+    <select id="selectAllCourseBySid" resultMap="courseMapper">
+      select * from score sc,stu st,course co where st.sid = sc.sid and co.cid = sc.cid and co.cid=#{cid}
+    </select>
+    <select id="selectAllStu" resultMap="courseMapper">
+      select * from score sc,stu st,course co where st.sid = sc.cid and co.cid = sc.sid
+    </select>
+    
+    <resultMap type="Course" id="courseMapper">
+      <id column="cid" property="cid" />
+      <result column="cname" property="cname" />
+      <!-- <association property="Score" javaType="Score">
+        <id property="scid" column="scid" />
+        <result column="score" property="score" />
+      </association> -->
+      <collection property="stu" ofType="Stu">
+       <id column="sid" property="sid" />
+       <result column="sname" property="sname" />
+      </collection>
+      
+    </resultMap>
+    
+ </mapper>
