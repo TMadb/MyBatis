@@ -29,5 +29,6 @@
    		<!-- <mapper resource="org/daoimpl/citydaomapper.xml" /> -->
    		<mapper resource="org/dao/CityDao.xml" />
    		<mapper resource="org/dao/CustomerDao.xml" />
+   		<mapper resource="org/dao/DepartmentDao.xml" />
    </mappers>
  </configuration>

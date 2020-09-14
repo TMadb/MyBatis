@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="org.dao.DepartmentDao">  
+ 
+ <resultMap type="Department" id="departmentMap">
+      <id column="id" property="id"  />
+      <result column="name" property="name" />
+      <result column="companyId" property="companyId" />
+      <result column="buildDate" property="buildDate" />
+      <result column="number" property="number" />
+      <collection property="emp" ofType="Employee">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+        <result column="location" property="location" />
+        <result column="ismale" property="ismale" />
+        <result column="joinDate" property="joinDate" />
+        <result column="salary" property="salary" />
+        <result column="deptId" property="deptId" />      
+      </collection>       
+    </resultMap>
+     <!-- 一个部门有很多员工，所以需要使用Map转换 -->
+    <select id="selectAllDepartmentById"  resultMap="departmentMap">
+    select * from employee em,department dp where em.deptId = dp.id and dp.id = #{deptId}
+    </select>    
+       
+    
+    
+  
+    <!-- 分步查询 -->
+    <!-- <select id="selectAllDepartmentById" resultMap="departmentMap">
+     select * from employee em,department dp where em.deptId = dp.id 
+    </select>
+    
+    <resultMap type="Department" id="departmentMap">
+      <id column="id" property="id"  />
+      <result column="name" property="name" />
+      <result column="companyId" property="companyId" />
+      <result column="buildDate" property="buildDate" />
+      <result column="number" property="number" />
+      <collection property="emp" column="deptId" ofType="Employee" select="selectEmployeeByDeptId"></collection>
+    </resultMap>
+      
+      <select id="selectEmployeeByDeptId" resultType="Employee">
+       select * from employee where deptId = #{deptId}
+      </select> -->
+    <!-- <select id="selectEmployeeByDeptId"  resultMap="departmentMap">
+     select * from employee em,department dp where em.deptId = dp.id and dp.id = #{deptId}
+    </select> --> 
+    <!-- <select id="selectDepartmentById" resultType="departmentMap">
+     select * from department where id = #{id}
+    </select> -->
+  </mapper> 
