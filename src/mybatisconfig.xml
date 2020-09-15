@@ -36,12 +36,13 @@
    <!-- 将映射文件添加到主配置文件中 -->
    <mappers>
    		<!-- <mapper resource="org/daoimpl/citydaomapper.xml" /> -->
-   		<mapper resource="org/dao/CityDao.xml" />
+   		<!-- <mapper resource="org/dao/CityDao.xml" />
    		<mapper resource="org/dao/CustomerDao.xml" />
    		<mapper resource="org/dao/DepartmentDao.xml" />
    		<mapper resource="org/dao/StuDao.xml" />
    		<mapper resource="org/dao/CourseDao.xml" />
    		<mapper resource="org/dao/ScoreDao.xml" />
-   		<mapper resource="org/dao/OrderDao.xml" />
+   		<mapper resource="org/dao/OrderDao.xml" /> -->
+   		<package name="org.dao"/>
    </mappers>
  </configuration>
