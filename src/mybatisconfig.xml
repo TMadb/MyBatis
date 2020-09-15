@@ -43,6 +43,6 @@
    		<mapper resource="org/dao/CourseDao.xml" />
    		<mapper resource="org/dao/ScoreDao.xml" />
    		<mapper resource="org/dao/OrderDao.xml" /> -->
-   		<package name="org.dao"/>
+   		<package name="org.dao"/>	
    </mappers>
  </configuration>
